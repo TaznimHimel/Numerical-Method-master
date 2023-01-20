@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <conio.h>
-#define f(x, y) (y * y - x * x) / (y * y + x * x)
+#define f(x, y) x*y
 
 int main()
 {

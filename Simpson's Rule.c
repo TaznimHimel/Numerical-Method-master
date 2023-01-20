@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <math.h>
-#define f(x) 1 / (1 + x * x)
+#define f(x) 1 / (x)
 
 int main()
 {

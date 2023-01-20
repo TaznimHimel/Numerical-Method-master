@@ -1,32 +1,33 @@
-#include <stdio.h>
-#include <math.h>
-#define e 0.001
-#define f(x) x *x *x - 4 * x - 1
-int main()
+#include<stdio.h>
+float f(float x)
 {
-    float x0, x1, x2;
-    float f0, f1, f2;
-    int i = 0;
-    printf("Enter the value of x0 and x1: ");
-    scanf("%f %f", &x0, &x1);
+    return(x*x*x-4); // f(x)= x^3-4
+}
+float main()
+{
+    float a,b,c,d,e;
+    int count=1,n;
+    printf("\n\nEnter the values of a and b:\n"); //(a,b) must contain the solution.
+    scanf("%f%f",&a,&b);
+    printf("Enter the values of allowed error and maximun number of iterations:\n");
+    scanf("%f %d",&e,&n);
     do
     {
-        f0 = f(x0);
-        f1 = f(x1);
-        x2 = (x0 + x1) / 2;
-        f2 = f(x2);
-        if (f0 * f2 < 0)
+        if(f(a)==f(b))
         {
-            x1 = x2;
+            printf("\nSolution cannot be found as the values of a and b are same.\n");
+        return;
         }
-        else
+        c=(a*f(b)-b*f(a))/(f(b)-f(a));
+        a=b;
+        b=c;
+        printf("Iteration No-%d    x=%f\n",count,c);
+        count++;
+        if(count==n)
         {
-            x0 = x2;
+        break;
         }
-        i++;
-        printf("Number of iterations = %d\t", i);
-        printf("Root = %f\t", x2);
-        printf("Value of the function = %f\n", f2);
-    } while (fabs(f2) > e);
-    return 0;
+    } while(fabs(f(c))>e);
+    printf("\n The required solution is %f\n",c);
+
 }
